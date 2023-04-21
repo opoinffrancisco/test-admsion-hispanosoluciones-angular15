@@ -1,0 +1,59 @@
+<app-cabecera [titulo]="'Contacto de soporte!'"></app-cabecera>
+<div class="container">
+
+  <form class="row g-3 needs-validation" [formGroup]="form">
+    <div class="col-md-12">
+      <label for="validationCustom01" class="form-label">Nombre completo</label>
+      <input type="text" class="form-control" id="validationCustom01" minlength="6" maxlength="100" formControlName="nombre_completo" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-12">
+      <label for="validationCustom02" class="form-label">Nombre de la empresa</label>
+      <input type="text" class="form-control" id="validationCustom02" minlength="2" maxlength="100" formControlName="nombre_empresa"value="" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-12">
+      <label for="validationCustom02" class="form-label">Correo electrónico</label>
+      <input type="email" class="form-control" id="validationCustom02" minlength="6" maxlength="100" formControlName="correo_electronico" value="" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>    
+    <div class="col-md-6">
+      <label for="validationCustom03" class="form-label">Teléfono</label>
+      <input type="text" class="form-control" id="validationCustom03" minlength="9" maxlength="20" formControlName="telefono" required>
+      <div class="invalid-feedback">
+        Please provide a valid city.
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="validationCustom04" class="form-label">Categoria</label>
+      <select class="form-select" id="validationCustom04" formControlName="id_categoria" required>
+        <option selected disabled value=""></option>
+        <option value="{{c.id}}" *ngFor="let c of categorias; index as i;" >{{ c.nombre }}</option>
+      </select>
+      <div class="invalid-feedback">
+        Please select a valid state.
+      </div>
+    </div>
+    <div class="mb-12">
+      <label for="validationTextarea" class="form-label">Textarea</label>
+      <textarea class="form-control" id="validationTextarea" placeholder="Escriba su mensaje" minlength="2" maxlength="255" formControlName="mensaje"  required></textarea>
+      <div class="invalid-feedback">
+        Please enter a message in the textarea.
+      </div>
+    </div>
+
+    <div class="col-12">
+      <button class="btn btn-primary" type="button" [disabled]="form.valid==false" (click)="guardar()">
+        <fa-icon [icon]="iconBtn"></fa-icon>
+        <label class="p-1">Enviar</label>
+      </button>
+    </div>
+  </form>
+
+</div>
